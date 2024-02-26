@@ -33,3 +33,4 @@ https://localhost:8000/
 ### helpful links
 
 - Database: https://symfony.com/doc/current/doctrine.html
+- init git or add remote repo: https://www.entechlog.com/blog/general/how-to-add-existing-folder-to-git/

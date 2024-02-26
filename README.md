@@ -34,3 +34,31 @@ https://localhost:8000/
 
 - Database: https://symfony.com/doc/current/doctrine.html
 - init git or add remote repo: https://www.entechlog.com/blog/general/how-to-add-existing-folder-to-git/
+
+### database
+
+- creating entity
+
+```
+php bin/console make:entity
+```
+
+- creating database schema/table
+
+```
+php bin/console make:migration
+```
+
+- execute migration
+
+```
+php bin/console doctrine:migrations:migrate
+```
+
+- drop/create database
+
+```
+php bin/console doctrine:database:drop --force
+php bin/console doctrine:database:create
+php bin/console doctrine:schema:update --force
+```

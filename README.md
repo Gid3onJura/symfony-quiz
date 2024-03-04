@@ -67,4 +67,5 @@ php bin/console doctrine:schema:update --force
 
 ```
 php bin/console cache:pool:clear --all
+php bin/console cache:clear
 ```

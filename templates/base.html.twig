@@ -23,8 +23,13 @@
 
 	</head>
 	<body>
+
+		{% include "global/flashbag.html.twig" %}
+
 		{% include "global/header.html.twig" %}
+
 		{% include "index/authModal.html.twig" %}
+
 		{% block body %}{% endblock %}
 
 		{% include "global/footer.html.twig" %}
@@ -36,6 +41,12 @@
 
 		<!-- Bootstrap -->
 		<script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+		<!-- Sweetalert -->
+		<script src="{{ asset('vendor/sweetalert/js/sweetalert2.all.min.js') }}"></script>
+
+		<!-- Custom JS -->
+		<script src="{{ asset('js/custom.js') }}"></script>
 
 
 	</body>

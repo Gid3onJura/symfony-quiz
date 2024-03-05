@@ -1,26 +1,26 @@
-<form class="row g-3" id="registrationFrom" novalidate>
+<form class="row g-3" id="registrationForm" novalidate method="post" action="{{ path('app_register_user') }}">
 	<div class="form-floating mb-3">
-		<input type="text" class="form-control" id="inputNickname" placeholder="Nickname" required>
-		<label class="ms-2" for="inputNickname">Nickname</label>
+		<input type="text" class="form-control" id="inputNickname" name="inputNickname" placeholder="Nickname" required>
+		<label class="ms-2" for="inputNickname">Nickname*</label>
 		<div class="valid-feedback">
-			Looks good!
+			Cooler Name!
+		</div>
+		<div class="invalid-feedback">
+			Bitte, wie möchtest du im Spiel genannt werden.
 		</div>
 	</div>
 	<div class="form-floating mb-3">
-		<input readonly type="text" class="form-control" id="inputAccessCode" placeholder="Code" value="{{ accesscode is defined and accesscode is not empty ? accesscode : '1234' }}" required>
+		<input readonly type="text" class="form-control" id="inputAccessCode" name="inputAccessCode" placeholder="Code" value="{{ app.session.get('accesscode') is defined and app.session.get('accesscode') is not empty ? app.session.get('accesscode') : '1234' }}" required>
 		<label class="ms-2" for="inputAccessCode">Zugangscode</label>
-		<div class="valid-feedback">
-			Looks good!
-		</div>
 	</div>
 	<div class="form-floating mb-3">
-		<input type="text" class="form-control" id="inputUserEmail" placeholder="Code">
+		<input type="email" class="form-control" id="inputUserEmail" name="inputUserEmail" placeholder="Code">
 		<label class="ms-2" for="inputUserEmail">E-Mail</label>
 		<div class="invalid-feedback">
 			Bitte gib eine valide E-Mail an.
 		</div>
 	</div>
 	<div class="col-12">
-		<button class="btn btn-primary" type="submit">Submit form</button>
+		<button class="btn btn-primary" type="submit">Registrieren</button>
 	</div>
 </form>

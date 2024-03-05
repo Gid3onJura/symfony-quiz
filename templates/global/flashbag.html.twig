@@ -1,0 +1,33 @@
+{% for type, messages in app.session.flashbag.all() %}
+	{% for message in messages %}
+		{% if type == 'success' %}
+			<div aria-live="polite" aria-atomic="true" class="bg-dark position-relative bd-example-toasts">
+				<div class="toast-container position-absolute p-3" id="toastPlacement">
+					<div class="toast" data-bs-autohide="true">
+						<div class="toast-header bg-success-light">
+							<span class="text-succes">Erfolg</span>
+						</div>
+						<div class="toast-body bg-success-light">
+							<span class="text-succes">{{ message }}</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		{% elseif type == 'error'%}
+			<div aria-live="polite" aria-atomic="true" class="bg-dark position-relative bd-example-toasts">
+				<div class="toast-container position-absolute p-3" id="toastPlacement">
+					<div class="toast">
+						<div class="toast-header">
+							<img src="..." class="rounded me-2" alt="...">
+							<strong class="me-auto">Bootstrap</strong>
+							<small>11 mins ago</small>
+						</div>
+						<div class="toast-body">
+							Hello, world! This is a toast message.
+						</div>
+					</div>
+				</div>
+			</div>
+		{% endif %}
+	{% endfor %}
+{% endfor %}

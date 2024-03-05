@@ -11,10 +11,8 @@ class IndexController extends AbstractController
     #[Route('/' , name:'app_index')]
     public function index(): Response
     {
-        $number = random_int(0, 100);
+        $aTemplateData = array();
 
-        return $this->render('lucky/number.html.twig', [
-            'number' => $number,
-        ]);
+        return $this->render('index/index.html.twig', $aTemplateData);
     }
 }

@@ -1,0 +1,26 @@
+<form class="row g-3" id="registrationFrom" novalidate>
+	<div class="form-floating mb-3">
+		<input type="text" class="form-control" id="inputNickname" placeholder="Nickname" required>
+		<label class="ms-2" for="inputNickname">Nickname</label>
+		<div class="valid-feedback">
+			Looks good!
+		</div>
+	</div>
+	<div class="form-floating mb-3">
+		<input readonly type="text" class="form-control" id="inputAccessCode" placeholder="Code" value="{{ accesscode is defined and accesscode is not empty ? accesscode : '1234' }}" required>
+		<label class="ms-2" for="inputAccessCode">Zugangscode</label>
+		<div class="valid-feedback">
+			Looks good!
+		</div>
+	</div>
+	<div class="form-floating mb-3">
+		<input type="text" class="form-control" id="inputUserEmail" placeholder="Code">
+		<label class="ms-2" for="inputUserEmail">E-Mail</label>
+		<div class="invalid-feedback">
+			Bitte gib eine valide E-Mail an.
+		</div>
+	</div>
+	<div class="col-12">
+		<button class="btn btn-primary" type="submit">Submit form</button>
+	</div>
+</form>

@@ -6,6 +6,5 @@ body {
 
 main {
   flex: 1;
-  min-height: 500px; /* Set your desired maximum height */
-  overflow-y: auto; /* Add scroll bar if content exceeds the maximum height */
+  min-height: 500px;
 }

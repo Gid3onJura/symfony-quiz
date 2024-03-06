@@ -24,13 +24,9 @@ class IndexController extends AbstractController
             $session->start();
         }
 
-        // generate a random string
-        // $sRandomCode = $utilities->generateRandomCode();
-
-        // save the random string in the session
-        // if (!empty($sRandomCode)) {
-        //     $session->set('accesscode', $sRandomCode);
-        // }
+        if ($this->getUser()) {
+            return $this->redirectToRoute('app_quiz_index');
+        }
 
         $aTemplateData = array();
 
@@ -40,6 +36,9 @@ class IndexController extends AbstractController
     #[Route('/login', name: 'app_login')]
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
+        if ($this->getUser()) {
+            return $this->redirectToRoute('app_quiz_index');
+        }
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
 

@@ -50,7 +50,7 @@ class IndexController extends AbstractController
 
         $this->addFlash(
             'success',
-            'Willkommen, du wurdest erfolgreich registriert.'
+            'Willkommen, du wurdest erfolgreich registriert. Melde dich mit deinem Code an.'
         );
 
         return $this->redirectToRoute('app_index');

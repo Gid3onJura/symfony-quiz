@@ -22,6 +22,12 @@
 })()
 
 $(document).ready(function () {
+  // show toasts
+  $(document).ready(function () {
+    $(".toast").toast("show")
+  })
+
+  // validate registration form
   validateForm("registrationForm")
 })
 

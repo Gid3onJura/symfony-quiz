@@ -46,20 +46,43 @@ function validateForm(formid) {
         switch (formid) {
           case "registrationForm":
             const serializedFormData = $(form).serialize()
-            const accessCode = $("#inputAccessCode").val()
             $.post("/ajax/checkregistration", serializedFormData).done(function (response) {
               if (response && !response.message) {
+                // submit form
+                $.post("/ajax/register", serializedFormData).done(function (response) {
+                  if (response && response.accessCode && response.nickname) {
+                    Swal.fire({
+                      title: "Registrierung erfolgreich!",
+                      html:
+                        "Mit folgendem Code <strong>" +
+                        response.accessCode +
+                        "</strong> kannst du dich einloggen! Merk ihn dir, sonst kannst du dich nicht einloggen oder an Gruppenspielen teilnehmen.",
+                      icon: "success",
+                      confirmButtonText: "Ok",
+                    }).then(function () {
+                      // switch to login tab
+                      const loginTab = $("#nav-login-tab")
+                      loginTab.trigger("click")
+
+                      // set access code and nickname
+                      $("#login_code").val(response.accessCode)
+                      $("#login_nickname").val(response.nickname)
+                    })
+                  } else if (response.message) {
+                    Swal.fire({
+                      title: "Schade!",
+                      html: response.message,
+                      icon: "error",
+                      confirmButtonText: "Ok",
+                    })
+                  }
+                })
+              } else if (response.message) {
                 Swal.fire({
-                  title: "Hinweis!",
-                  html:
-                    "Bitte merk dir den Code <strong>" +
-                    accessCode +
-                    "</strong>. Nur damit kannst du deine Erfolge einsehen und an Gruppenspielen teilnehmen.",
-                  icon: "info",
-                  confirmButtonText: "Gemerkt!",
-                }).then(function () {
-                  // submit form
-                  form.submit()
+                  title: "Schade!",
+                  html: response.message,
+                  icon: "error",
+                  confirmButtonText: "Ok",
                 })
               }
             })

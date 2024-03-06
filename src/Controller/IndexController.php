@@ -2,16 +2,20 @@
 
 namespace App\Controller;
 
+use App\Entity\Users;
 use App\Service\Utilities;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Doctrine\ORM\EntityManagerInterface;
 
 class IndexController extends AbstractController
 {
-    #[Route('/' , name:'app_index')]
+    #[Route('/', name: 'app_index')]
     public function index(Utilities $utilities): Response
     {
         $session = new Session();
@@ -21,38 +25,36 @@ class IndexController extends AbstractController
         }
 
         // generate a random string
-        $sRandomCode = $utilities->generateRandomCode();
+        // $sRandomCode = $utilities->generateRandomCode();
 
         // save the random string in the session
-        if (!empty($sRandomCode)) {
-            $session->set('accesscode', $sRandomCode);
-        }
+        // if (!empty($sRandomCode)) {
+        //     $session->set('accesscode', $sRandomCode);
+        // }
 
         $aTemplateData = array();
 
         return $this->render('index/index.html.twig', $aTemplateData);
     }
 
-    #[Route('/register' , name:'app_register_user')]
-    public function registeruser(Request $request, Utilities $utilities): Response
+    #[Route('/login', name: 'app_login')]
+    public function login(AuthenticationUtils $authenticationUtils): Response
     {
-        $session = new Session();
-        $sNickname = '';
-        $sUserEmail = '';
-        $sAccessCodeFromSession = '';
+        // get the login error if there is one
+        $error = $authenticationUtils->getLastAuthenticationError();
 
-        if (!empty($session)) {
-            $sAccessCodeFromSession = $session->get('accesscode');
-        }
+        // last username entered by the user
+        $lastUsername = $authenticationUtils->getLastUsername();
 
-        $sNickname = $request->get('inputNickname') ?? '';
-        $sUserEmail = $request->get('inputUserEmail')?? '';
+        return $this->render('index/index.html.twig', [
+            'controller_name' => 'LoginController',
+            'last_username' => $lastUsername,
+            'error'         => $error,
+        ]);
+    }
 
-        $this->addFlash(
-            'success',
-            'Willkommen, du wurdest erfolgreich registriert. Melde dich mit deinem Code an.'
-        );
-
-        return $this->redirectToRoute('app_index');
+    #[Route('/logout', name: 'app_logout')]
+    public function logout(AuthenticationUtils $authenticationUtils)
+    {
     }
 }

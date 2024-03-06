@@ -1,7 +1,7 @@
 {% for type, messages in app.session.flashbag.all() %}
 	{% if type == 'success' %}
 		{% for message in messages %}
-			<div class="toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true">
+			<div class="toast align-items-center position-absolute top-0 end-0" role="alert" aria-live="assertive" aria-atomic="true">
 				<div class="d-flex">
 					<div class="toast-body">
 						<i class="text-success bi bi-check-circle-fill me-auto"></i>
@@ -13,7 +13,7 @@
 		{% endfor %}
 	{% elseif type == 'error'%}
 		{% for message in messages %}
-			<div class="toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true">
+			<div class="toast align-items-center position-absolute top-0 end-0" role="alert" aria-live="assertive" aria-atomic="true">
 				<div class="d-flex">
 					<div class="toast-body">
 						<i class="text-danger bi bi-exclamation-circle-fill me-auto"></i>

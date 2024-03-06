@@ -2,13 +2,13 @@
 	<div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 {% endif %}
 <form class="row g-3" id="loginFrom" method="post" action="{{ path('app_login') }}">
-	<div class="col-md-4">
-		<label for="validationCustom01" class="form-label">Nickname</label>
-		<input type="text" class="form-control" id="login_nickname" name="_username" value="" required>
+	<div class="form-floating mb-3">
+		<input type="text" class="form-control" id="login_nickname" placeholder="Nickname" name="_username" value="" required>
+		<label class="ms-2" for="login_nickname">Nickname*</label>
 	</div>
-	<div class="col-md-4">
-		<label for="validationCustom01" class="form-label">Code</label>
-		<input type="text" class="form-control" id="login_code" name="_password" value="" required>
+	<div class="form-floating mb-3">
+		<input type="text" class="form-control" id="login_code" placeholder="Code" name="_password" value="" required>
+		<label class="ms-2" for="login_code">Code*</label>
 	</div>
 
 	<div class="col-12">

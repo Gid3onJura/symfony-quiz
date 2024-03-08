@@ -1,5 +1,5 @@
 {% if error is defined %}
-	<div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+	<div>{{ error.messageKey is defined ? error.messageKey|trans(error.messageData, 'security') : '' }}</div>
 {% endif %}
 <form class="row g-3" id="loginFrom" method="post" action="{{ path('app_login') }}">
 	<div class="form-floating mb-3">

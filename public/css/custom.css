@@ -8,3 +8,11 @@ main {
   flex: 1;
   min-height: 500px;
 }
+
+.hover-bg-primary:hover {
+  background-color: var(--bs-primary) !important;
+}
+
+.hover-text-white:hover {
+  color: #ffffff !important;
+}

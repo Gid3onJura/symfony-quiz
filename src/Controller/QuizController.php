@@ -22,4 +22,20 @@ class QuizController extends AbstractController
 
         return $this->render('quiz/index.html.twig', $aTemplateData);
     }
+
+    #[Route('/quiz/single', name: 'app_quiz_singleplayer')]
+    public function singleplayer(Utilities $utilities): Response
+    {
+        $aTemplateData = array();
+
+        return $this->render('quiz/singleplayer.html.twig', $aTemplateData);
+    }
+
+    #[Route('/quiz/multi', name: 'app_quiz_multiplayer')]
+    public function multiplayer(Utilities $utilities): Response
+    {
+        $aTemplateData = array();
+
+        return $this->render('quiz/multiplayer.html.twig', $aTemplateData);
+    }
 }

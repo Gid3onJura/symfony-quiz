@@ -23,12 +23,10 @@
 			{% if is_granted('IS_AUTHENTICATED_FULLY') %}
 				<div class="dropdown text-end">
 					<a href="#" class="d-block link-dark text-decoration-none" id="dropdownUser" data-bs-toggle="dropdown" aria-expanded="false">
-						{% if user.avatarurl is defined and user.avatarurl is not empty%}
-							<img src="{{ user.avatarurl }}" alt="avatar" width="32" height="32" class="rounded-circle">
-						{% elseif user is defined and user is not empty %}
-							<div class="rounded-circle">
-								{{ user.firstname|first|capitalize }}{{ user.lastname|first|capitalize }}
-							</div>
+						{% if app.user.avatarurl is defined and app.user.avatarurl is not empty%}
+							<img src="{{ app.user.avatarurl }}" alt="avatar" width="32" height="32" class="rounded-circle">
+						{% elseif app.user is defined and app.user is not empty %}
+							<div class="d-flex justify-content-center align-items-center rounded-circle bg-primary px-2 py-1" style="width: 42px; height:42px;">{{ app.user.nickname|first|capitalize }}</div>
 						{% else %}
 							<div class="d-flex justify-content-center align-items-center rounded-circle bg-primary px-2 py-1" style="width: 42px; height:42px;">U</div>
 						{% endif %}

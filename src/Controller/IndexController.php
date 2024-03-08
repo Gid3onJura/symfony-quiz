@@ -45,10 +45,13 @@ class IndexController extends AbstractController
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
 
+        // $this->addFlash('error', 'Login Error');
+
         return $this->render('index/index.html.twig', [
             'controller_name' => 'LoginController',
             'last_username' => $lastUsername,
-            'error'         => $error,
+            'error' => $error,
+            'showmodal' => 'authModal'
         ]);
     }
 

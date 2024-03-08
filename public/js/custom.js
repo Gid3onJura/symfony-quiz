@@ -1,8 +1,15 @@
 $(document).ready(function () {
   // show toasts
-  $(document).ready(function () {
-    $(".toast").toast("show")
+  $(".toast").toast("show")
+
+  // show modal
+  const showModal = new bootstrap.Modal(document.getElementById($("#_showmodal").val()), {
+    keyboard: false,
   })
+
+  if (showModal) {
+    showModal.show()
+  }
 
   // validate registration form
   validateRegistrationForm()

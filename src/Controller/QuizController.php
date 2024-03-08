@@ -15,6 +15,9 @@ use Doctrine\ORM\EntityManagerInterface;
 
 class QuizController extends AbstractController
 {
+    /**
+     * @Security("is_granted('ROLE_USER')
+     */
     #[Route('/quiz', name: 'app_quiz_index')]
     public function index(Utilities $utilities): Response
     {
@@ -23,6 +26,9 @@ class QuizController extends AbstractController
         return $this->render('quiz/index.html.twig', $aTemplateData);
     }
 
+    /**
+     * @Security("is_granted('ROLE_USER')
+     */
     #[Route('/quiz/single', name: 'app_quiz_singleplayer')]
     public function singleplayer(Utilities $utilities): Response
     {
@@ -31,6 +37,9 @@ class QuizController extends AbstractController
         return $this->render('quiz/singleplayer.html.twig', $aTemplateData);
     }
 
+    /**
+     * @Security("is_granted('ROLE_USER')
+     */
     #[Route('/quiz/multi', name: 'app_quiz_multiplayer')]
     public function multiplayer(Utilities $utilities): Response
     {
